@@ -1,0 +1,28 @@
+.container {
+  margin-left: 8vw;
+  margin-top: 10vh;
+  height: 80vh;
+  width: 84vw;
+  border: 2px dashed green;
+  overflow: scroll;  
+  display: flex;
+  flex-direction: row;
+  background: lightgrey;  
+}
+
+.container .scrollBlocks {
+  flex: 1 0 100%;
+  outline: 1px solid black;
+  height: 2000px;
+}
+
+.container #left.scrollBlocks {
+  flex-basis: 300px;
+  width: 300px;
+  background-color: aliceblue;
+}
+
+.container #right.scrollBlocks {
+  width: 2000px;
+  background-color: blanchedalmond;
+}

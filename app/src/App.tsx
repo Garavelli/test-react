@@ -1,8 +1,12 @@
 import React from 'react';
+import './styles/app.css';
 
 function App() {
   return (
-    <h1>hello</h1>
+    <div className="container">
+      <div id="left" className="scrollBlocks"></div>
+      <div id="right" className="scrollBlocks"></div>      
+    </div>
   );
 }
 
