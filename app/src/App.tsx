@@ -1,16 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './styles/app.css';
 
 export default function App(): React.ReactElement {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [scrollTop, setScrollTop] = useState(0);
 
+  const leftBlock = useRef<HTMLDivElement | null>(null);
+  const rightBlock = useRef<HTMLDivElement | null>(null);
+
+  const firstRender = useRef<boolean>(true);
+  
+
   useEffect(() => {
-    console.log('scrolling left: ', scrollLeft)
+    if (firstRender.current) {
+      return;
+    }
+    //console.log('scrolling left: ', scrollLeft, leftBlock.current);
+    //rightBlock.current?.classList.remove('freeze')
+    leftBlock.current?.classList.add('freeze')
   }, [scrollLeft])
 
   useEffect(() => {
-    console.log('scrolling top: ', scrollTop);
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    //console.log('scrolling top: ', scrollTop, rightBlock.current);
+    leftBlock.current?.classList.remove('freeze')
+    rightBlock.current?.classList.add('freeze')
   }, [scrollTop])
 
   function handleScrolling(event: React.SyntheticEvent) {
@@ -26,8 +43,8 @@ export default function App(): React.ReactElement {
   }
   return (
     <div className="container" onScroll={handleScrolling}>
-      <div id="left" className="scrollBlocks"></div>
-      <div id="right" className="scrollBlocks"></div>      
+      <div id="left" className="scrollBlocks" ref={leftBlock}></div>
+      <div id="right" className="scrollBlocks" ref={rightBlock}></div>      
     </div>
   );
 };
