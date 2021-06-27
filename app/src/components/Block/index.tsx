@@ -7,8 +7,6 @@ interface Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDi
 
 export default function Block({innerRef, ...rest}: Props): ReactElement {
   return (
-    <div ref={innerRef} {...rest}>
-      
-    </div>
+    <div ref={innerRef} {...rest} />
   )
 }

@@ -1,3 +1,8 @@
+:root {
+  --width-before: 0px;
+  --background-color: lightgrey;
+}
+
 #container {
   margin-left: 8vw;
   margin-top: 10vh;
@@ -11,7 +16,6 @@
 }
 
 #container .scrollBlocks {
-  outline: 1px solid black;
   height: 2000px;
   flex: auto;
   flex-grow: 1;
@@ -35,17 +39,16 @@
   width: 2000px;
   background: rgb(2,0,36);
   background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,58,121,1) 54%, rgba(0,78,255,1) 100%);
-  background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
 }
 
-#container #right.scrollBlocks:before {
+#container #right.scrollBlocks::before {
+  content: '';
   position: absolute;  
+  z-index: 19;
   top: 0;
   left: 0;
-  bottom: 0;
   height: 2000px;
-  width: 500px;
-  background-color: lightgrey;
+  width: var(--width-before);
+  background: var(--background-color);
 }
